@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:6-alpine'
+            image 'agencycore/docker-ember-test:latest'
             args '-p 4200:4200'
         }
     }
@@ -11,12 +11,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install && npm run build'
+                sh 'yarn && yarn run build'
             }
         }
         stage('Test') {
             steps {
-                sh 'npm run test'
+                sh 'yarn run test'
             }
         }
         stage('Deliver') {
