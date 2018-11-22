@@ -9,9 +9,14 @@ pipeline {
         CI = 'true'
     }
     stages {
+        stage('Install Deps') {
+            steps {
+                sh 'yarn'
+            }
+        }
         stage('Build') {
             steps {
-                sh 'yarn && yarn run build'
+                sh 'yarn run build'
             }
         }
         stage('Test') {
